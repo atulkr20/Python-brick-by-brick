@@ -13,18 +13,31 @@ def createfile():
         readfileandfolder()
         name = input("please tell your file name :- ")
         p = Path(name)
-        if not p.exists() and p.is_file():
-
-           with open(p,"w")as fs:
-            data = input(" What you want to write in this file :- ")
-            fs.write(data)
+        if not p.exists():
+            with open(p,"w")as fs:
+                data = input(" What you want to write in this file :- ")
+                fs.write(data)
 
         print(F"FILE CREATED SUCCESSFULLY")
     except Exception as error:
         print(f"An error occured as {error}")
 
 
+def readFile():
+    try:
+        readfileandfolder()
+        nam = input("Which file you want to read")
+        p = Path(name)
+        if p.exists() and p.is_file():
+            with open(p, 'r') as fs:
+                data = fs.read()
+                print(data)
 
+            print("Readed Successfully")
+        else:
+            print("the file doesnot exists")
+    except Exception as error:
+        print(f"An error occured as {error}")
 
 print("Press 1 for creating a file")
 print("Press 2 for reading a file")
